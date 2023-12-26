@@ -49,8 +49,9 @@ export default class Random extends Component {
 
     render() {
         return (
-            <div className="container text-center ">
-                <img src={this.state.images[this.state.face]} alt="" />
+            <div className="container text-center">
+                <img src="/photos/dice_game.png" width={250}/><br/>
+                <img src={this.state.images[this.state.face]} alt="" width={100}/>
                 <h1 className="text-success">Jeu de Dé</h1>
                 <h2>Face : {this.state.face}</h2>
                 <h2>nombre d'essais : {this.state.compteur}</h2>
