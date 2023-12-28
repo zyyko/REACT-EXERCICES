@@ -9,45 +9,46 @@ export default class Slider extends Component {
         this.state = {
             prevSlide : 3,
             currentSlide : 4,
-            nextSlide : 5
         }
-       
+
     }
 
+   
+      
+
     nextSlideFunctionRight () {
-        if(this.state.currentSlide !== this.state.nextSlide) {
+        if(this.state.currentSlide !== this.state.prevSlide) {
             this.setState({
                 prevSlide : this.state.currentSlide, 
-                currentSlide : this.state.nextSlide,
-                nextSlide : this.state.nextSlide + 1
+                currentSlide : this.state.currentSlide + 1,
+                
             })
 
-            if(this.state.currentSlide === 5) {
+            if(this.state.currentSlide === 17) {
                 this.setState({
                     prevSlide : this.state.currentSlide, 
                     currentSlide : 1,
-                    nextSlide : 2
+               
             })
             
             }
         }
+
     }
 
     prevSlideFunctionLeft () {
-        const totalPhotos = 5
+        const totalPhotos = 17
         if(this.state.currentSlide !== this.state.prevSlide) {
             //let current = this.state.prevSlide
             this.setState({
-                prevSlide : this.state.prevSlide - 1, 
+                prevSlide : this.state.currentSlide, 
                 currentSlide : this.state.currentSlide - 1,
-                nextSlide : this.state.nextSlide - 1
             })
 
             if(this.state.currentSlide === 1) {
                 this.setState({
-                    prevSlide : totalPhotos - 1,
+                    prevSlide : this.state.currentSlide,
                     currentSlide : totalPhotos,
-                    nextSlide : 6
                 })
             }
         }
@@ -55,7 +56,7 @@ export default class Slider extends Component {
     }
     render() {
         return (
-        <div className="container">      
+        <div className="container">   
             <button className="arrow-left-button" onClick={() => this.prevSlideFunctionLeft()}>
                 <FontAwesomeIcon icon={faArrowLeft} className="arrow-left-icon" style={{fontSize:50}}/>
             </button>
