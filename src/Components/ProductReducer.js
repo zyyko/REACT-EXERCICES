@@ -1,6 +1,5 @@
 export const INITIAL_VALUE = {
     ProductList : [],
-    SearchedProduct : [],
     error : undefined,
     loading : true
 }
@@ -15,10 +14,20 @@ export const ProductReducer = (state, action) => {
                 ...state,
                 ProductList : action.payload.collection
             };
-        case 'SEARCHED_PRODUCTS':
+        case 'CATEGORIES':
             return {
                 ...state,
-                SearchedProduct : action.payload.collection
+                CategoryList : action.payload.collection
+            }
+        case 'ERROR':
+            return{
+                ...state,
+                error : action.payload.hasError
+            }
+        case 'LOADING':
+            return {
+                ...state,
+                loading : action.payload.isLoading
             }
         
     }
