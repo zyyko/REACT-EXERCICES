@@ -1,25 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
+import ChercheBar from './Components/ChercheBar';
+import { useState } from 'react';
+import List from './Components/List';
+
 
 function App() {
+
+  const list=[
+    {nom:"banane",type:"fruit"},
+    {nom:"orange",type:"fruit"},
+    {nom:"pomme",type:"fruit"},
+    {nom:"raisins",type:"fruit"},
+    {nom:"kiwi",type:"fruit"},
+    {nom:"tomate",type:"legume"},
+    {nom:"carotte",type:"legume"},
+    {nom:"pomme de terre",type:"legume"},
+    {nom:"navet",type:"legume"},
+    {nom:"poivron",type:"legume"}
+    ]
+
+    const [type,setType] = useState();
+    const [filteredList, setfiltiredList] = useState([]);
+
+    const searchOnApp = (type) => {
+      setType(type);
+      setfiltiredList(list.filter((item) => item.type.toLocaleLowerCase() == type))
+    }
+
+    
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      {console.log(filteredList)}
+      <ChercheBar search={searchOnApp} />
+      <div>
+        <List result={filteredList}/>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
