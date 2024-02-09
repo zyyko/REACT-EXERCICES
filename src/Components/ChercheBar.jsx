@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function ChercheBar(props) {
     const [valeur, setValeur] = useState('');
-    const handleSearch  = (event) => {
+    const handleSearch  = () => {
         props.search(valeur)
     }
 

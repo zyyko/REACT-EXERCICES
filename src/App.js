@@ -31,11 +31,12 @@ function App() {
     
   return (
     <div className='container'>
-      {console.log(filteredList)}
       <ChercheBar search={searchOnApp} />
       <div>
+      <h1>Type : {type}</h1>
         <List result={filteredList}/>
       </div>
+      
     </div>
   )
 }
